@@ -1,8 +1,15 @@
 # 🚀 Análisis de Datos de Criptomonedas 📊
+<<<<<<< HEAD
 En este proyecto, utilizamos Python y Streamlit para llevar a cabo un análisis detallado y realizar calculos de ganancias o perdidas potenciales en relación a las criptomonedas que seleccionaremos para este proyecto. ¡Vamos a explorar juntos las tendencias que prevalecen dentro del emocionante mundo de las finanzas descentralizadas (DeFi)!
 <br>
 
 ## 📊 Panel de Control del Proyecto
+=======
+En este proyecto, utilizamos Python y Streamlit para llevar a cabo un análisis detallado y realizar calculos de ganancias o perdidas potenciales en relación a las criptomonedas que seleccionaremos para este proyecto. ¡Vamos a explorar juntos las tendencias que prevalecen dentro del emocionante mundo de las finanzas descentralizadas (DeFi)!<br>
+<br>
+
+## ## 📊 Panel de Control del Proyecto
+>>>>>>> eae30a420eb8afd9bd672df63d77af3d19d068a3
 ¿Listo para explorar el panel de control y los análisis completos? [¡Haz clic aquí para acceder!](http://localhost:8501)
 
 
