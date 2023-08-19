@@ -3,7 +3,7 @@ En este proyecto, utilizamos Python y Streamlit para llevar a cabo un análisis 
 <br>
 
 ## ## 📊 Panel de Control del Proyecto
-¿Listo para explorar el panel de control y los análisis completos? [¡Haz clic aquí para acceder!](http://localhost:8501)
+¿Listo para explorar el panel de control y los análisis completos? [¡Haz clic aquí para acceder!](https://mainpy-hze6bykhappix4mbvy6pcqr.streamlit.app)
 
 
 <img src="./images/crypto_market.jpeg-900x510.jpg" alt="tokens" width="600"/>
