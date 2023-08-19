@@ -42,8 +42,8 @@ st.plotly_chart(fig)
 # Agregar separador visual
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
-# Sección para calcular ganancias potenciales
-st.subheader('Calcular Ganancias o perdidas potenciales')
+# Sección para calcular ganancias 
+st.subheader('Calcular Ganancias o perdidas en periodo 2020 - 2023')
 
 selected_investment_date = st.date_input('Selecciona una fecha para invertir:')
 selected_future_date = st.date_input('Selecciona una fecha futura:')
@@ -153,4 +153,4 @@ st.markdown("<h2 style='text-align: center; font-family: Arial, sans-serif; colo
 st.markdown("<h3 style='text-align: center; font-family: Arial, sans-serif;'>👨‍🎓 Alumno Benjamin Zelaya 👨‍🎓</h3>", unsafe_allow_html=True)
 
 
-### streamlit run crypto_dashboard_app.py  (PARA CORRER)
+### streamlit run crypto_dashboard_app.py  (PARA CORRER EN LOCAL)
