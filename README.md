@@ -1,12 +1,9 @@
 # 🚀 Análisis de Datos de Criptomonedas 📊
-En este proyecto, utilizamos Python y Power BI para llevar a cabo un análisis detallado y realizar pronósticos en relación a las criptomonedas más populares. ¡Vamos a explorar juntos las tendencias que prevalecen dentro del emocionante mundo de las finanzas descentralizadas (DeFi)!<br>
+En este proyecto, utilizamos Python y Streamlit para llevar a cabo un análisis detallado y realizar calculos de ganancias o perdidas potenfuales en relación a las criptomonedas que seleccionaremos para este proyecto. ¡Vamos a explorar juntos las tendencias que prevalecen dentro del emocionante mundo de las finanzas descentralizadas (DeFi)!<br>
 <br>
 
-## 📊 Panel de Control del Proyecto
-¿Listo para explorar el panel de control y los análisis completos? ¡Haz clic aquí para acceder!
-
-
-
+## ## 📊 Panel de Control del Proyecto
+¿Listo para explorar el panel de control y los análisis completos? [¡Haz clic aquí para acceder!](http://localhost:8501)
 
 
 <img src="./images/crypto_market.jpeg-900x510.jpg" alt="tokens" width="600"/>
