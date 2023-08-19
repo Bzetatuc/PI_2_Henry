@@ -4,7 +4,7 @@ import plotly.express as px
 
 # Leer el archivo CSV y procesar los datos
 try:
-    df_crypto_dashboard = pd.read_csv('/Users/benjaminzelaya/Desktop/PI_DA-main/PI_2_Henry/dataframes_dashboard.csv')
+    df_crypto_dashboard = pd.read_csv('dataframes_dashboard.csv')
     df_crypto_dashboard['date'] = pd.to_datetime(df_crypto_dashboard['date']).dt.date
 except Exception as e:
     print("Error al leer el archivo CSV:", e)
