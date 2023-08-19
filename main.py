@@ -27,14 +27,12 @@ df_selected_token = df_crypto_dashboard[df_crypto_dashboard['symbol'] == selecte
 token_max_price = df_selected_token['price'].max()
 token_min_price = df_selected_token['price'].min()
 token_avg_price = df_selected_token['price'].mean()
-token_volatility = df_selected_token['price'].std()  # Cálculo de la volatilidad
 
 # Diseño en columnas para mostrar los primeros KPIs
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("Máximo Precio", f"${token_max_price:.2f}")
 col2.metric("Mínimo Precio", f"${token_min_price:.2f}")
 col3.metric("Precio Promedio", f"${token_avg_price:.2f}")
-col4.metric("Volatilidad", f"{token_volatility:.2f}")
 
 # Gráfico de precio a lo largo del tiempo para el token seleccionado
 st.subheader(f'Precio a lo largo del tiempo para {selected_token}')
