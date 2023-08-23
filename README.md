@@ -2,14 +2,6 @@
 En este proyecto, utilizamos Python y Streamlit para llevar a cabo un análisis detallado y realizar calculos de ganancias o perdidas potenciales en relación a las criptomonedas que seleccionaremos para este proyecto. ¡Vamos a explorar juntos las tendencias que prevalecen dentro del emocionante mundo de las finanzas descentralizadas (DeFi)!<br>
 <br>
 
-## ## 📊 Panel de Control del Proyecto
-¿Listo para explorar el panel de control y los análisis completos? [¡Haz clic aquí para acceder!](https://mainpy-hze6bykhappix4mbvy6pcqr.streamlit.app)
-
-
-<img src="./images/crypto_market.jpeg-900x510.jpg" alt="tokens" width="600"/>
-
-<br>
-<br>
 
 ## 📚 Descripción
 
@@ -25,14 +17,35 @@ Los estímulos económicos implementados en respuesta a la pandemia de COVID-19 
 
 El aumento en el precio de Bitcoin, junto con Ethereum, las principales monedas con mayor capitalización de mercado, y otras criptomonedas, atrajo una cobertura mediática significativa. Esto impulsó la conciencia pública y el interés en el mercado de criptomonedas, contribuyendo al aumento de la demanda. Por ello, nuestro análisis se enfoca en el periodo de 2020 a 2023. 📈
 
+<br>
+
+## 📈 Key Performance Indicators (KPIs) utilizados en el Dashboard
+
+En esta aplicación de análisis de criptomonedas, se presentan varios KPIs que ofrecen información valiosa sobre el rendimiento de los tokens seleccionados. Estos KPIs son fundamentales para comprender la evolución y el comportamiento de los activos digitales a lo largo del tiempo.
+
+- **Precio Máximo** : El KPI "Precio Máximo" muestra el valor más alto alcanzado por el token seleccionado durante el período analizado. Este KPI es útil para identificar los momentos en los que el token experimentó su valor más alto y puede indicar posibles tendencias alcistas.
+
+- **Precio Mínimo** : El KPI "Precio Mínimo" indica el valor más bajo registrado por el token seleccionado en el mismo período. Este KPI es importante para identificar los momentos en los que el token tuvo su valor más bajo y puede ofrecer información sobre tendencias bajistas o volatilidad.
+
+- **Precio Promedio**: El KPI "Precio Promedio" calcula el valor promedio del token seleccionado durante el período. Este KPI proporciona una visión general del comportamiento general del token en términos de valor medio y puede ayudar a comprender su tendencia a lo largo del tiempo.
+
+- **ROI (Return on Investment)**: El KPI "ROI" o "Return on Investment" calcula el rendimiento de una inversión en el token seleccionado. Representa el porcentaje de ganancia o pérdida en relación con la inversión inicial. Un ROI positivo indica un rendimiento favorable, mientras que un ROI negativo señala una pérdida en la inversión.
+
+- **Correlación** : El KPI "Correlación" examina la relación estadística entre los precios del token seleccionado y otros activos, como Bitcoin u otras criptomonedas de referencia. La correlación puede ayudar a determinar si el token sigue patrones similares a otros activos y si su precio está influenciado por factores similares.
+
+- **Estos KPIs se presentan visualmente en la aplicación a través de gráficos interactivos que representan la evolución del precio del token seleccionado. La visualización de los KPIs permite a los usuarios obtener una comprensión rápida y clara de cómo ha variado el valor del token y cómo ha respondido a diferentes condiciones del mercado.**
+
+- **Además de estos KPIs, la aplicación también ofrece herramientas para calcular ganancias y pérdidas basadas en inversiones pasadas, comparar el rendimiento de diferentes tokens, explorar la correlación entre los precios de tokens y recibir recomendaciones de exchanges confiables.**
+
+<br>
 
 ## TOKENS SELECCIONADOS 
 
 <img src="./images/Cryptocurrency-Bitcoin-Blockchian-Dice.jpg" alt="tokens" width="600"/>
 <br>
-<br>
 
-¡Aquí presentamos una descripción breve de las criptomonedas seleccionadas para este proyecto!
+
+## ¡Aquí presentamos una descripción breve de las criptomonedas seleccionadas para este proyecto!
 
 * **Binance Coin (BNB):** BNB es la moneda nativa de Binance, una de las principales plataformas de intercambio de criptomonedas. Muchos inversores podrían considerar invertir en BNB debido a su utilidad en la plataforma Binance, como descuentos en tarifas de intercambio y acceso a ventas de tokens. Además, el crecimiento de Binance como plataforma podría impactar positivamente en la demanda de BNB. 💱
 
@@ -54,6 +67,7 @@ El aumento en el precio de Bitcoin, junto con Ethereum, las principales monedas 
 
 * **USD Coin (USDC):** Similar a Tether, USD Coin es una criptomoneda estable vinculada al dólar estadounidense. Aquellos que buscan una alternativa estable en el mundo de las criptomonedas podrían considerar USDC.💲
 
+<br>
 
 # EN CONCLUSION:
 
@@ -76,9 +90,47 @@ Uso Real: Ripple y sus soluciones para pagos internacionales, así como Tether y
 
 * En momentos de incertidumbre económica, algunas personas buscan refugio en activos como Bitcoin, considerándolo como una reserva de valor en tiempos de volatilidad.
 
+<br>
+
+
+## 📊 Panel de Control de Dashboard
+¿Listo para explorar el panel de control y los análisis completos? [¡Haz clic aquí para acceder!](https://mainpy-hze6bykhappix4mbvy6pcqr.streamlit.app)
+
+
+<img src="./images/crypto_market.jpeg-900x510.jpg" alt="tokens" width="600"/>
+
+<br>
+
+
+
+## 📌 Recursos Utilizados
+
+En este proyecto, hemos utilizado las siguientes herramientas y recursos:
+
+- Python: Utilizamos Python como lenguaje de programación principal para el análisis de datos y la generación de visualizaciones.
+
+- Streamlit: Creamos un panel de control interactivo utilizando Streamlit, que nos permitió visualizar y presentar los resultados de manera efectiva.
+
+- Pandas y Numpy: Utilizamos estas bibliotecas para la manipulación y análisis de datos.
+
+- Matplotlib y Seaborn: Generamos gráficos y visualizaciones para representar los datos de manera clara y comprensible.
+
+<br>
+
+
+## 📚 Referencias
+
+- [Streamlit Documentation](https://docs.streamlit.io/)
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+- [Matplotlib Documentation](https://matplotlib.org/stable/contents.html)
+- [Seaborn Documentation](https://seaborn.pydata.org/documentation.html)
+
+<br>
 
 
 ### ¡Explora más a fondo cada criptomoneda y considera cómo se alinean con tus objetivos y estrategia de inversión!📊
 
 #### ⚠️ Importante: Es crucial tener en mente que la inversión en criptomonedas implica riesgos significativos y que la situación del mercado puede cambiar con gran rapidez. Antes de considerar cualquier inversión, es altamente recomendable llevar a cabo una investigación exhaustiva sobre cada proyecto. Además, es esencial evaluar tu tolerancia al riesgo y definir claramente tus objetivos financieros. Las criptomonedas son activos volátiles y no adecuados para todos los perfiles de inversores. ¡Siempre mantén la cautela y la prudencia en mente! 🚀📊🛡️
+
+
 
