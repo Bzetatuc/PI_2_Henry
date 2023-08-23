@@ -103,7 +103,7 @@ st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
 # Sección para calcular ganancias 
 # Ganancias y Pérdidas entre tokens
-st.header('Ganancias y Pérdidas comparanfo Tokens 💰')
+st.header('Ganancias y Pérdidas comparando Tokens 💰')
 st.write("¿Ahora te preguntas cuánto podrías haber ganado si hubieras invertido en otro token específico? ¡Te tenemos nuevamente cubierto! Puedes seleccionar otro token de nuestra lista,  una nueva fecha de inversión y una nueva fecha futura, junto con la cantidad que habrías invertido en ambos. Nuestra aplicación calculará y mostrará tus posibles ganancias o pérdidas, así como el retorno de inversión (ROI) comparativas.")
 
 # Seleccionar un token para comparar
