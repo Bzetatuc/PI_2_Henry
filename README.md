@@ -57,7 +57,7 @@ En esta aplicación de análisis de criptomonedas, se presentan varios KPIs que 
 
 * **Ethereum (ETH):** Ethereum es una plataforma líder para contratos inteligentes y dApps. Muchos inversores ven a Ethereum como el "Internet de las finanzas" y creen en su capacidad para transformar industrias. El crecimiento del ecosistema DeFi y NFT (tokens no fungibles) en la plataforma podría aumentar su demanda. 💡
 
-* **Polkadot (DOT):** Polkadot busca habilitar la interoperabilidad entre diferentes blockchains. Aquellos que creen en la importancia de la interoperabilidad y la conexión entre diferentes proyectos blockchain podrían considerar invertir en DOT. 🔗
+* **Polkadot (DOT):** Polkadot busca habilitar la interoperabilidad entre diferentes blockchains. Aquellos que creen en la importancia de la interoperabilidad y la conexión entre diferentes proyectos blockchain podrían considerar invertir en DOT. La interoperabilidad en el contexto de la tecnología blockchain se refiere a la capacidad de diferentes blockchains (redes de registro distribuido) para comunicarse, interactuar y trabajar juntas de manera eficiente y fluida. Cada blockchain es como un sistema independiente que almacena registros y ejecuta contratos inteligentes. Sin embargo, en el mundo real, hay muchas blockchains con diferentes propósitos, protocolos y características 🔗
 
 * **Ripple (XRP):** Ripple se centra en facilitar transferencias internacionales de dinero. Inversores interesados en soluciones de pagos globales podrían considerar XRP. Sin embargo, el litigio actual con la SEC ha afectado la percepción de riesgo asociada con esta moneda. 💸
 
