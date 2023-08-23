@@ -224,7 +224,6 @@ elif selected_column in ['price']:
 # Agregar separador visual
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
-
 # Sección para mostrar la correlación entre los precios de diferentes tokens
 correlation_matrix = df_crypto_dashboard.pivot_table(index='date', columns='symbol', values='price').corr()
 
@@ -241,13 +240,47 @@ if len(selected_tokens) == 2:
     specific_correlation = correlation_matrix.loc[selected_tokens[0], selected_tokens[1]]
     st.write(f'Correlación entre {selected_tokens[0]} y {selected_tokens[1]}: {specific_correlation:.4f}')
     
-    # Conclusión
+    # Conclusión de correlación específica
     if specific_correlation > 0.7:
         st.write(f'La correlación entre {selected_tokens[0]} y {selected_tokens[1]} es alta, lo que sugiere que tienden a moverse en la misma dirección en el mercado.')
     elif specific_correlation < -0.7:
         st.write(f'La correlación entre {selected_tokens[0]} y {selected_tokens[1]} es negativa, lo que sugiere que tienden a moverse en direcciones opuestas en el mercado.')
     else:
         st.write(f'La correlación entre {selected_tokens[0]} y {selected_tokens[1]} es baja, lo que sugiere que no hay una relación clara en sus movimientos en el mercado.')
+
+# Perfil de inversor basado en la correlación
+st.subheader('Perfil de Inversor')
+st.write("✅ **Diversificador:** Si la correlación es baja, tiendes a diversificar tus inversiones para minimizar riesgos y no depender de un solo tipo de activo.")
+st.write("🔄 **Neutral en Correlación:** Si la correlación está cerca de cero, no tienes preferencias claras y podrías tener una combinación de estrategias.")
+st.write("🔗 **Inversor en Pares:** Si la correlación es alta, te inclinas hacia movimientos en la misma dirección en el mercado.")
+st.write("🔄 **Inversor Contrario:** Si la correlación es negativa, buscas aprovechar movimientos opuestos en el mercado.")
+if len(selected_tokens) == 2:
+    st.write("Basado en la correlación y los tokens seleccionados, podrías tener el siguiente perfil de inversor:")
+    
+    
+    # Definir los perfiles de inversor
+
+    profiles = {
+        'Diversificador': "La correlación de los tokens seleccionados es baja, tiendes a diversificar tus inversiones para minimizar riesgos y no depender de un solo tipo de activo.",
+        'Neutral en Correlación': "La correlación de los tokens seleccionados está cerca de cero, no tienes preferencias claras y podríamos proponerte una combinación de estrategias.",
+        'Inversor en Pares': "La correlación de los tokens seleccionados es alta, te inclinas hacia movimientos en la misma dirección en el mercados.",
+        'Inversor Contrario': "La correlación de los tokens seleccionados es negativa, buscas aprovechar movimientos opuestos en el mercado."
+    }
+    
+    # Obtener el perfil basado en la correlación
+    if specific_correlation > 0.7:
+        profile = 'Inversor en Pares'
+    elif specific_correlation < -0.7:
+        profile = 'Inversor Contrario'
+    elif specific_correlation > -0.3 and specific_correlation < 0.3:
+        profile = 'Neutral en Correlación'
+    else:
+        profile = 'Diversificador'
+    
+ 
+ # Mostrar el perfil 
+    st.markdown(f"<h2 style='text-align:center;color:#3498db;'>Perfil: {profile}</h2>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size:18px;text-align:justify;'>{profiles[profile]}</p>", unsafe_allow_html=True)
 
 
 # Visualización de la matriz de correlación como un mapa de calor
@@ -259,6 +292,8 @@ st.write("La matriz de correlación muestra cómo los precios de diferentes toke
 
 # Descripción debajo del mapa de calor de la correlación
 st.write("El mapa de calor resalta visualmente las relaciones de correlación entre los tokens. Los colores más intensos representan una correlación más fuerte, ya sea positiva o negativa.")
+
+
 
 # Consideraciones Importantes
 st.header('Consideraciones Importantes ⚠️')
