@@ -229,9 +229,12 @@ correlation_matrix = df_crypto_dashboard.pivot_table(index='date', columns='symb
 
 # Mostrar correlación como DataFrame
 st.subheader('Correlación entre Precios de Tokens')
+st.write("La matriz de correlación muestra cómo los precios de diferentes tokens están correlacionados entre sí. Un valor más cercano a 1 indica una correlación positiva, mientras que un valor más cercano a -1 indica una correlación negativa.")
 st.write("También puedes explorar la correlación entre los precios de diferentes tokens. Mostramos una matriz de correlación que te permite visualizar cómo los precios de los tokens están relacionados. Además, puedes seleccionar dos tokens específicos para ver su correlación detallada.")
 st.write('Matriz de correlación entre los precios de diferentes tokens:')
 st.dataframe(correlation_matrix)
+
+
 
 # Interacción para seleccionar tokens y mostrar correlación específica
 st.subheader('Correlación Específica entre Tokens')
@@ -250,21 +253,23 @@ if len(selected_tokens) == 2:
 
 # Perfil de inversor basado en la correlación
 st.subheader('Perfil de Inversor')
-st.write("✅ **Diversificador:** Si la correlación es baja, tiendes a diversificar tus inversiones para minimizar riesgos y no depender de un solo tipo de activo.")
-st.write("🔄 **Neutral en Correlación:** Si la correlación está cerca de cero, no tienes preferencias claras y podrías tener una combinación de estrategias.")
-st.write("🔗 **Inversor en Pares:** Si la correlación es alta, te inclinas hacia movimientos en la misma dirección en el mercado.")
-st.write("🔄 **Inversor Contrario:** Si la correlación es negativa, buscas aprovechar movimientos opuestos en el mercado.")
+st.write("✅ **Diversificador:** Si la correlación es baja, tiendes a diversificar tus inversiones para minimizar riesgos y no depender de un solo tipo de activo. Esto puede ayudarte a mantener un equilibrio en tu cartera y protegerte contra grandes pérdidas en un solo activo..")
+st.write("🔄 **Neutral en Correlación:** Si la correlación está cerca de cero, no tienes preferencias claras y podríamos proponerte una combinación de estrategias. Podrías estar buscando oportunidades tanto en activos con alta correlación como en aquellos con baja correlación, dependiendo de las condiciones del mercado.")
+st.write("🔗 **Inversor en Pares:** Si la correlación es alta, te inclinas hacia movimientos en la misma dirección en el mercado. Esto sugiere que buscas aprovechar las tendencias y los movimientos conjuntos de los activos, lo que puede ser beneficioso en períodos de fuertes tendencias alcistas o bajistas..")
+st.write("🔄 **Inversor Contrario:** Si la correlación es negativa, buscas aprovechar movimientos opuestos en el mercado. Esta estrategia implica invertir en activos que tienden a moverse en direcciones opuestas, lo que puede ser beneficioso para aprovechar situaciones de sobrecompra o sobreventa en el mercado..")
 if len(selected_tokens) == 2:
     st.write("Basado en la correlación y los tokens seleccionados, podrías tener el siguiente perfil de inversor:")
+    
     
     
     # Definir los perfiles de inversor
 
     profiles = {
-        'Diversificador': "La correlación de los tokens seleccionados es baja, tiendes a diversificar tus inversiones para minimizar riesgos y no depender de un solo tipo de activo.",
-        'Neutral en Correlación': "La correlación de los tokens seleccionados está cerca de cero, no tienes preferencias claras y podríamos proponerte una combinación de estrategias.",
-        'Inversor en Pares': "La correlación de los tokens seleccionados es alta, te inclinas hacia movimientos en la misma dirección en el mercados.",
-        'Inversor Contrario': "La correlación de los tokens seleccionados es negativa, buscas aprovechar movimientos opuestos en el mercado."
+
+    'Diversificador': "La correlación de los tokens seleccionados es baja, lo que sugiere que tiendes a diversificar tus inversiones para minimizar riesgos. Esta estrategia te permite no depender de un solo tipo de activo y mantener un equilibrio en tu cartera.",
+    'Neutral en Correlación': "La correlación de los tokens seleccionados está cerca de cero, lo que indica que no tienes preferencias claras por ciertos tipos de activos. En esta situación, podríamos proponerte una combinación de estrategias para aprovechar diferentes oportunidades en el mercado.",
+    'Inversor en Pares': "La correlación de los tokens seleccionados es alta, lo que sugiere que te inclinas hacia movimientos en la misma dirección en el mercado. Esta estrategia te permite aprovechar las tendencias conjuntas de los activos y puede ser beneficiosa en períodos de fuertes tendencias alcistas o bajistas.",
+    'Inversor Contrario': "La correlación de los tokens seleccionados es negativa, lo que indica que buscas aprovechar movimientos opuestos en el mercado. Esta estrategia implica invertir en activos que tienden a moverse en direcciones opuestas, lo que puede ser beneficioso para aprovechar situaciones de sobrecompra o sobreventa."
     }
     
     # Obtener el perfil basado en la correlación
@@ -283,15 +288,16 @@ if len(selected_tokens) == 2:
     st.write(f"<p style='font-size:18px;text-align:justify;'>{profiles[profile]}</p>", unsafe_allow_html=True)
 
 
-# Visualización de la matriz de correlación como un mapa de calor
-fig_heatmap = px.imshow(correlation_matrix, color_continuous_scale='RdBu_r', title='Mapa de calor de la correlación')
+
+# Mapa de calor de la correlación
+fig_heatmap = px.imshow(correlation_matrix, color_continuous_scale='RdBu', title='Mapa de Calor de Correlación')
 st.plotly_chart(fig_heatmap)
 
-# Descripción debajo del gráfico de matriz de correlación
-st.write("La matriz de correlación muestra cómo los precios de diferentes tokens están correlacionados entre sí. Un valor más cercano a 1 indica una correlación positiva, mientras que un valor más cercano a -1 indica una correlación negativa.")
 
 # Descripción debajo del mapa de calor de la correlación
+st.subheader('Mapa de Calor de Correlación')
 st.write("El mapa de calor resalta visualmente las relaciones de correlación entre los tokens. Los colores más intensos representan una correlación más fuerte, ya sea positiva o negativa.")
+
 
 
 
