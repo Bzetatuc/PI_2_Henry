@@ -111,7 +111,7 @@ st.write("Dentro de la sección del token seleccionado, te ofrecemos un vistazo 
 
 # Seleccionar una columna para análisis
 #Aquí, se crea un cuadro de selección (selectbox) donde el usuario puede elegir una columna del DataFrame df_selected_token para realizar análisis.
-selected_column = st.selectbox('Selecciona una columna para análisis', df_selected_token.columns)
+selected_column = st.selectbox('Selecciona una columna para análisis', ['date', 'price', 'ath_value'])
 
 # Interacción con valores seleccionados
 #Si la columna seleccionada es 'date', se muestran las fechas únicas disponibles en el DataFrame mediante un cuadro de selección múltiple (multiselect).
@@ -125,21 +125,26 @@ if selected_column == 'date':
         st.subheader(f'Análisis de precios para las fechas seleccionadas')
         st.write('Fechas seleccionadas:', ', '.join([date.strftime('%Y-%m-%d') for date in selected_dates]))
         filtered_data = df_selected_token[df_selected_token['date'].isin(selected_dates)]
-        st.write('Promedio de precio:', filtered_data['price'].mean())
         
-        max_price_row = filtered_data[filtered_data['price'] == filtered_data['price'].max()]
-        st.write('Máximo de precio:', max_price_row['price'].iloc[0], 'Fecha:', max_price_row['date'].iloc[0].strftime('%Y-%m-%d'))
+        max_date_row = filtered_data[filtered_data['price'] == filtered_data['price'].max()]
+        st.write('Máximo de precio:', max_date_row['price'].iloc[0], 'Fecha:', max_date_row['date'].iloc[0].strftime('%Y-%m-%d'))
         
-        min_price_row = filtered_data[filtered_data['price'] == filtered_data['price'].min()]
-        st.write('Mínimo de precio:', min_price_row['price'].iloc[0], 'Fecha:', min_price_row['date'].iloc[0].strftime('%Y-%m-%d'))
-else:
-    selected_values = st.multiselect('Selecciona valores', df_selected_token[selected_column].unique())
+        min_date_row = filtered_data[filtered_data['price'] == filtered_data['price'].min()]
+        st.write('Mínimo de precio:', min_date_row['price'].iloc[0], 'Fecha:', min_date_row['date'].iloc[0].strftime('%Y-%m-%d'))
+
+elif selected_column in ['price', 'ath_value']:
+    selected_values = st.multiselect(f'Selecciona valores de la columna {selected_column}', df_selected_token[selected_column].unique())
     if selected_values:
         st.subheader(f'Análisis de {selected_column}')
         st.write(f'Valores seleccionados: {selected_values}')
-        st.write('Promedio:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].mean())
-        st.write('Máximo:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].max())
-        st.write('Mínimo:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].min())
+        
+        max_value_row = df_selected_token[df_selected_token[selected_column].isin(selected_values)][selected_column].idxmax()
+        st.write(f'Máximo de {selected_column}:', df_selected_token.loc[max_value_row, selected_column],
+                 'Fecha:', df_selected_token.loc[max_value_row, 'date'].strftime('%Y-%m-%d'))
+        
+        min_value_row = df_selected_token[df_selected_token[selected_column].isin(selected_values)][selected_column].idxmin()
+        st.write(f'Mínimo de {selected_column}:', df_selected_token.loc[min_value_row, selected_column],
+                 'Fecha:', df_selected_token.loc[min_value_row, 'date'].strftime('%Y-%m-%d'))
 #Si la columna seleccionada no es 'date', significa que el usuario eligió otra columna para análisis. 
 # En este caso, se permite al usuario seleccionar valores únicos de esa columna utilizando un cuadro de selección múltiple.
 # Después de seleccionar los valores, se filtran los datos para incluir solo las filas que contienen los valores seleccionados. 
