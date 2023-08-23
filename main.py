@@ -13,6 +13,13 @@ except Exception as e:
 st.title('Análisis de Criptomonedas 🚀📊')
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
+# Título del video
+st.title("Historia de Inversión en Criptomonedas")
+
+# Agregar el video
+video_url = "https://youtu.be/0pbTJ6N_Nps"  
+st.video(video_url)
+
 
 # Sidebar para seleccionar token
 # Explorando el Mercado
