@@ -316,11 +316,31 @@ st.subheader('Mapa de Calor de Correlación')
 st.write("El mapa de calor resalta visualmente las relaciones de correlación entre los tokens. Los colores más intensos representan una correlación más fuerte, ya sea positiva o negativa.")
 
 
-
-
 # Consideraciones Importantes
 st.header('Consideraciones Importantes ⚠️')
 st.warning("Antes de embarcarte en cualquier inversión en criptomonedas, es fundamental recordar que estos activos son altamente volátiles y conllevan riesgos significativos. La situación del mercado puede cambiar rápidamente. Te recomendamos investigar exhaustivamente cada proyecto y evaluar tu tolerancia al riesgo antes de considerar cualquier inversión.")
+st.markdown('<hr style="border: 2px solid #3498db;">', unsafe_allow_html=True)
+
+# Sección para Exchange Recomendados
+st.header('Exchanges Recomendados 💼')
+st.write("Aquí te presentamos algunos de los exchanges más recomendados usados para operar criptomonedas. Estos exchanges han demostrado ser confiables, seguros y ofrecen una variedad de tokens para operar. Recomendamos siempre de investigar y tomar precauciones antes de operar en cualquier exchange.")
+
+# Información de los exchanges recomendados
+exchanges = [
+    {'nombre': 'Binance', 'descripcion': 'Uno de los exchanges más grandes y populares del mundo.', 'link': 'https://www.binance.com/'},
+    {'nombre': 'Coinbase', 'descripcion': 'Plataforma amigable para principiantes, ideal para comprar y almacenar criptomonedas.', 'link': 'https://www.coinbase.com/'},
+    {'nombre': 'Kraken', 'descripcion': 'Exchange con una sólida reputación y una amplia gama de tokens disponibles.', 'link': 'https://www.kraken.com/'},
+    # Agrega más exchanges recomendados aquí
+]
+
+# Mostrar la información de los exchanges en una lista
+for exchange in exchanges:
+    st.write(f"**{exchange['nombre']}**: {exchange['descripcion']} [Mas información]({exchange['link']})")
+
+# Nota: Asegúrate de proporcionar descripciones precisas y actualizadas de los exchanges, así como enlaces a sus sitios web oficiales.
+
+
+# Agregar separador visual
 st.markdown('<hr style="border: 2px solid #3498db;">', unsafe_allow_html=True)
 
 # Centrar texto con estilo y emojis
