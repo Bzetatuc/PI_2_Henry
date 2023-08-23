@@ -17,7 +17,7 @@ st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 st.title("Historia de Inversión en Criptomonedas")
 
 # Agregar el video
-video_url = "https://youtu.be/0pbTJ6N_Nps"  
+video_url = "https://youtu.be/TFE_-AUo56I"  
 st.video(video_url)
 
 
