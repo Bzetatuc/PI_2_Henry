@@ -84,7 +84,6 @@ if selected_investment_date and selected_future_date and investment_amount > 0:
 # Agregar separador visual
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
-
 # Mostrar DataFrame
 st.subheader(f'DataFrame para {selected_token}')
 st.write(df_selected_token)
@@ -103,6 +102,13 @@ if selected_column == 'date':
         st.write('Promedio de precio:', filtered_data['price'].mean())
         st.write('Máximo de precio:', filtered_data['price'].max())
         st.write('Mínimo de precio:', filtered_data['price'].min())
+        
+        # Obtener la fecha del máximo y del mínimo
+        max_price_date = filtered_data.loc[filtered_data['price'].idxmax()]['date']
+        min_price_date = filtered_data.loc[filtered_data['price'].idxmin()]['date']
+        
+        st.write('Fecha del máximo:', max_price_date.strftime('%Y-%m-%d'))
+        st.write('Fecha del mínimo:', min_price_date.strftime('%Y-%m-%d'))
 else:
     selected_values = st.multiselect('Selecciona valores', df_selected_token[selected_column].unique())
     if selected_values:
@@ -111,7 +117,6 @@ else:
         st.write('Promedio:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].mean())
         st.write('Máximo:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].max())
         st.write('Mínimo:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].min())
-
 
 
 
