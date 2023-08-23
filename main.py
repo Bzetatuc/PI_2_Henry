@@ -78,8 +78,8 @@ if selected_investment_date and selected_future_date and investment_amount > 0:
         potential_gain = investment_amount * (future_price / initial_price)
         roi = ((future_price - initial_price) / initial_price) * 100
         
-        st.write(f"Si hubieras invertido ${investment_amount:.2f}$ dolares en ${selected_token}$ el ${selected_investment_date}, "
-                 f"$ a la fecha ${selected_future_date}$ podrias haber obtenido un valor de ${potential_gain:.2f}$ dolares en {selected_token}.")
+        st.write(f" Si hubieras invertido ${investment_amount:.2f} dolares en  {selected_token}  el  {selected_investment_date}, "
+                 f" a la fecha  {selected_future_date}  podrias haber obtenido un valor de  {potential_gain:.2f}  dolares en {selected_token}.")
         
         # Mostrar ROI
         st.markdown(f'Retorno de Inversion (Return on Investment "ROI"): **{roi:.2f}%**', unsafe_allow_html=True)
@@ -106,10 +106,14 @@ st.header('Ganancias y Pérdidas comparando Tokens 💰')
 st.write("¿Ahora te preguntas cuánto podrías haber ganado si hubieras invertido en otro token específico? ¡Te tenemos nuevamente cubierto! Puedes seleccionar otro token de nuestra lista, una nueva fecha de inversión y una nueva fecha futura, junto con la cantidad que habrías invertido en ambos. Nuestra aplicación calculará y mostrará tus posibles ganancias o pérdidas, así como el retorno de inversión (ROI) comparativas.")
 
 # Seleccionar un token para comparar
-selected_comparison_token = st.selectbox('Selecciona un token para comparar', df_crypto_dashboard['symbol'].unique())
+available_tokens = df_crypto_dashboard['symbol'].unique()
+selected_token_for_comparison = st.selectbox('Selecciona un token para comparar', available_tokens)
+
+# Remover el token seleccionado previamente de las opciones
+options_without_selected_token = [token for token in available_tokens if token != selected_token]
 
 # Obtener los datos del token seleccionado para comparación
-df_comparison_token = df_crypto_dashboard[df_crypto_dashboard['symbol'] == selected_comparison_token]
+df_comparison_token = df_crypto_dashboard[df_crypto_dashboard['symbol'] == selected_token_for_comparison]
 
 selected_investment_date_comparacion = st.date_input('Selecciona una fecha para invertir en la comparación:')
 selected_future_date_comparacion = st.date_input('Selecciona una fecha futura en la comparación:')
@@ -133,19 +137,19 @@ if selected_investment_date_comparacion and selected_future_date_comparacion and
         comparison_potential_gain = investment_amount_comparacion * (comparison_future_price / comparison_initial_price)
         comparison_roi = ((comparison_future_price - comparison_initial_price) / comparison_initial_price) * 100
         
-        st.write(f"Si hubieras invertido ${investment_amount_comparacion:.2f}$ dolares en ${selected_token}$ el ${selected_investment_date_comparacion}, "
-                 f"a la fecha ${selected_future_date_comparacion}$ podrías haber obtenido un valor de ${potential_gain_comparacion:.2f}$ dolares en {selected_token}.")
+        st.write(f" Si hubieras invertido  {investment_amount_comparacion:.2f}  dolares en  {selected_token}  el  {selected_investment_date_comparacion}, "
+                 f" a la fecha  {selected_future_date_comparacion}  podrías haber obtenido un valor de  {potential_gain_comparacion:.2f}  dolares en {selected_token}.")
         
-        st.write(f"Si hubieras invertido ${investment_amount_comparacion:.2f}$ dolares en {selected_comparison_token} el ${selected_investment_date_comparacion}, "
-                 f"a la fecha ${selected_future_date_comparacion}$ podrías haber obtenido un valor de ${comparison_potential_gain:.2f}$ dolares en {selected_comparison_token}.")
+        st.write(f" Si hubieras invertido  {investment_amount_comparacion:.2f}  dolares en {selected_token_for_comparison} el  {selected_investment_date_comparacion}, "
+                 f" a la fecha  {selected_future_date_comparacion}  podrías haber obtenido un valor de  {comparison_potential_gain:.2f}  dolares en {selected_token_for_comparison}.")
         
         # Mostrar ROIs
         st.markdown(f'Retorno de Inversion (ROI) para {selected_token}: **{roi_comparacion:.2f}%**', unsafe_allow_html=True)
-        st.markdown(f'Retorno de Inversion (ROI) para {selected_comparison_token}: **{comparison_roi:.2f}%**', unsafe_allow_html=True)
+        st.markdown(f'Retorno de Inversion (ROI) para {selected_token_for_comparison}: **{comparison_roi:.2f}%**', unsafe_allow_html=True)
 
         # Gráfico de cambio en el valor (gráfico de barras agrupadas)
         fig_change_comparacion = px.bar(
-            x=[f'Valor Inicial ({selected_token})', f'Valor Futuro ({selected_token})', f'Valor Inicial ({selected_comparison_token})', f'Valor Futuro ({selected_comparison_token})'],
+            x=[f'Valor Inicial ({selected_token})', f'Valor Futuro ({selected_token})', f'Valor Inicial ({selected_token_for_comparison})', f'Valor Futuro ({selected_token_for_comparison})'],
             y=[initial_price_comparacion, future_price_comparacion, comparison_initial_price, comparison_future_price],
             title='Cambio en el Valor',
             labels={'x': 'Valor', 'y': 'Precio'}
@@ -156,7 +160,6 @@ if selected_investment_date_comparacion and selected_future_date_comparacion and
         
     else:
         st.warning('Alguna de las fechas seleccionadas no está en el conjunto de datos o los tokens no coinciden.')
-
 
 
 # Agregar separador visual
@@ -237,6 +240,15 @@ selected_tokens = st.multiselect('Selecciona dos tokens:', df_crypto_dashboard['
 if len(selected_tokens) == 2:
     specific_correlation = correlation_matrix.loc[selected_tokens[0], selected_tokens[1]]
     st.write(f'Correlación entre {selected_tokens[0]} y {selected_tokens[1]}: {specific_correlation:.4f}')
+    
+    # Conclusión
+    if specific_correlation > 0.7:
+        st.write(f'La correlación entre {selected_tokens[0]} y {selected_tokens[1]} es alta, lo que sugiere que tienden a moverse en la misma dirección en el mercado.')
+    elif specific_correlation < -0.7:
+        st.write(f'La correlación entre {selected_tokens[0]} y {selected_tokens[1]} es negativa, lo que sugiere que tienden a moverse en direcciones opuestas en el mercado.')
+    else:
+        st.write(f'La correlación entre {selected_tokens[0]} y {selected_tokens[1]} es baja, lo que sugiere que no hay una relación clara en sus movimientos en el mercado.')
+
 
 # Visualización de la matriz de correlación como un mapa de calor
 fig_heatmap = px.imshow(correlation_matrix, color_continuous_scale='RdBu_r', title='Mapa de calor de la correlación')
