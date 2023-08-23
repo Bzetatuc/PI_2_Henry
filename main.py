@@ -42,7 +42,7 @@ st.write("También proporcionamos un gráfico interactivo que muestra la evoluci
 token_max_price = df_selected_token['price'].max()
 token_min_price = df_selected_token['price'].min()
 token_avg_price = df_selected_token['price'].mean()
-token_volatility = df_selected_token['price'].std()
+token_iqr = df_selected_token['price'].quantile(0.75) - df_selected_token['price'].quantile(0.25)
 
 
 # Diseño en columnas para mostrar los primeros KPIs
@@ -50,7 +50,7 @@ col1, col2, col3, col4 = st.columns(4)
 col1.metric("Máximo Precio", f"${token_max_price:.2f}")
 col2.metric("Mínimo Precio", f"${token_min_price:.2f}")
 col3.metric("Precio Promedio", f"${token_avg_price:.2f}")
-col4.metric("Volatilidad", f"{token_volatility:.2f}")
+col4.metric("Volatilidad (IQR)", f"{token_iqr:.2f}")
 
 
 # Gráfico de precio a lo largo del tiempo para el token seleccionado
