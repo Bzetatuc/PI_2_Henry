@@ -9,12 +9,15 @@ try:
 except Exception as e:
     print("Error al leer el archivo CSV:", e)
 
-# Título de la aplicación
-st.title('🚀 Análisis de Criptomonedas 📊')
+## Título de la aplicación
+st.title('Análisis de Criptomonedas 🚀📊')
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
 
 # Sidebar para seleccionar token
+# Explorando el Mercado
+st.header('Explorando el Mercado 📈')
+st.write("Comenzamos con un vistazo general al mercado. Cargamos los datos de diferentes criptomonedas y mostramos las principales estadísticas. Además, puedes seleccionar el token que más te interese en el menú de la barra lateral.")
 st.sidebar.subheader('🔷 Selecciona un token')
 selected_token = st.sidebar.selectbox('Elije un token:', df_crypto_dashboard['symbol'].unique())
 
@@ -24,6 +27,10 @@ selected_token = st.sidebar.selectbox('Elije un token:', df_crypto_dashboard['sy
 df_selected_token = df_crypto_dashboard[df_crypto_dashboard['symbol'] == selected_token]
 
 # Calcular KPIs para el token seleccionado
+# Análisis de un Token Específico
+st.header('Análisis de un Token Específico 📊')
+st.write("Una vez seleccionado un token, presentamos detalles clave sobre su rendimiento. Mostramos el precio máximo, mínimo y promedio a lo largo del tiempo. Esto te permitirá obtener una visión rápida de cómo ha evolucionado el token en el período analizado.")
+st.write("También proporcionamos un gráfico interactivo que muestra la evolución del precio de ese token a lo largo del tiempo. Puedes explorar las tendencias y cambios en el valor con facilidad.")
 token_max_price = df_selected_token['price'].max()
 token_min_price = df_selected_token['price'].min()
 token_avg_price = df_selected_token['price'].mean()
@@ -35,7 +42,6 @@ col2.metric("Mínimo Precio", f"${token_min_price:.2f}")
 col3.metric("Precio Promedio", f"${token_avg_price:.2f}")
 
 # Gráfico de precio a lo largo del tiempo para el token seleccionado
-st.subheader(f'Precio a lo largo del tiempo para {selected_token}')
 fig = px.line(df_selected_token, x='date', y='price', title=f'Precio a lo largo del tiempo para {selected_token}')
 st.plotly_chart(fig)
 
@@ -43,7 +49,9 @@ st.plotly_chart(fig)
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
 # Sección para calcular ganancias 
-st.subheader('Calcular Ganancias o perdidas en periodo 2020 - 2023')
+# Ganancias y Pérdidas
+st.header('Ganancias y Pérdidas 💰')
+st.write("¿Te preguntas cuánto podrías haber ganado si hubieras invertido en un token específico en el pasado? ¡Te tenemos cubierto! Puedes seleccionar una fecha de inversión y una fecha futura, junto con la cantidad que habrías invertido. Nuestra aplicación calculará y mostrará tus posibles ganancias o pérdidas, así como el retorno de inversión (ROI).")
 
 selected_investment_date = st.date_input('Selecciona una fecha para invertir:')
 selected_future_date = st.date_input('Selecciona una fecha futura:')
@@ -84,14 +92,25 @@ if selected_investment_date and selected_future_date and investment_amount > 0:
 # Agregar separador visual
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
-# Mostrar DataFrame
+# Mostrar DataFrame 
+#Esto agrega un subtítulo en la aplicación web que muestra el nombre del token (o cualquier variable que hayas definido como selected_token) junto a "DataFrame para".
 st.subheader(f'DataFrame para {selected_token}')
+#Esto muestra el DataFrame df_selected_token en la aplicación web. Es simplemente una representación visual de los datos.
 st.write(df_selected_token)
 
+# Explorando los Datos en Detalle
+st.header('Explorando los Datos en Detalle 📊')
+st.write("Dentro de la sección del token seleccionado, te ofrecemos un vistazo más detallado a los datos subyacentes. Puedes seleccionar una columna para análisis y, en caso de que selecciones fechas, te presentaremos estadísticas sobre las fechas seleccionadas, incluyendo el promedio, el máximo y el mínimo de los precios.")
+
 # Seleccionar una columna para análisis
+#Aquí, se crea un cuadro de selección (selectbox) donde el usuario puede elegir una columna del DataFrame df_selected_token para realizar análisis.
 selected_column = st.selectbox('Selecciona una columna para análisis', df_selected_token.columns)
 
 # Interacción con valores seleccionados
+#Si la columna seleccionada es 'date', se muestran las fechas únicas disponibles en el DataFrame mediante un cuadro de selección múltiple (multiselect).
+#Luego, si el usuario selecciona algunas fechas, se filtran los datos para incluir solo las filas con las fechas seleccionadas. Luego se calcula el promedio de los precios para las fechas seleccionadas.
+#Además, se encuentra la fila con el precio máximo y la fila con el precio mínimo dentro del conjunto de datos filtrado. Luego se muestra el precio máximo y mínimo junto con sus fechas correspondientes.
+
 if selected_column == 'date':
     selected_dates = st.multiselect('Selecciona fechas', df_selected_token['date'].unique(),
                                     format_func=lambda date: date.strftime('%Y-%m-%d'))
@@ -114,6 +133,11 @@ else:
         st.write('Promedio:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].mean())
         st.write('Máximo:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].max())
         st.write('Mínimo:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].min())
+#Si la columna seleccionada no es 'date', significa que el usuario eligió otra columna para análisis. 
+# En este caso, se permite al usuario seleccionar valores únicos de esa columna utilizando un cuadro de selección múltiple.
+# Después de seleccionar los valores, se filtran los datos para incluir solo las filas que contienen los valores seleccionados. 
+# #Luego se calcula el promedio, el máximo y el mínimo de los precios correspondientes a los valores seleccionados.
+
 
 # Agregar separador visual
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
@@ -124,6 +148,7 @@ correlation_matrix = df_crypto_dashboard.pivot_table(index='date', columns='symb
 
 # Mostrar correlación como DataFrame
 st.subheader('Correlación entre Precios de Tokens')
+st.write("También puedes explorar la correlación entre los precios de diferentes tokens. Mostramos una matriz de correlación que te permite visualizar cómo los precios de los tokens están relacionados. Además, puedes seleccionar dos tokens específicos para ver su correlación detallada.")
 st.write('Matriz de correlación entre los precios de diferentes tokens:')
 st.dataframe(correlation_matrix)
 
@@ -144,11 +169,13 @@ st.write("La matriz de correlación muestra cómo los precios de diferentes toke
 # Descripción debajo del mapa de calor de la correlación
 st.write("El mapa de calor resalta visualmente las relaciones de correlación entre los tokens. Los colores más intensos representan una correlación más fuerte, ya sea positiva o negativa.")
 
-st.write("⚠️ Importante: Es crucial tener en mente que la inversión en criptomonedas implica riesgos significativos y que la situación del mercado puede cambiar con gran rapidez. Antes de considerar cualquier inversión, es altamente recomendable llevar a cabo una investigación exhaustiva sobre cada proyecto. Además, es esencial evaluar tu tolerancia al riesgo y definir claramente tus objetivos financieros. Las criptomonedas son activos volátiles y no adecuados para todos los perfiles de inversores. ¡Siempre mantén la cautela y la prudencia en mente! 🚀📊🛡️")
-
+# Consideraciones Importantes
+st.header('Consideraciones Importantes ⚠️')
+st.warning("Antes de embarcarte en cualquier inversión en criptomonedas, es fundamental recordar que estos activos son altamente volátiles y conllevan riesgos significativos. La situación del mercado puede cambiar rápidamente. Te recomendamos investigar exhaustivamente cada proyecto y evaluar tu tolerancia al riesgo antes de considerar cualquier inversión.")
 st.markdown('<hr style="border: 2px solid #3498db;">', unsafe_allow_html=True)
 
 # Centrar texto con estilo y emojis
+#creditos
 st.markdown("<h2 style='text-align: center; font-family: Arial, sans-serif; color: #3498db;'>🚀 Proyecto Individual 2 Data Science - Henry 🚀</h2>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align: center; font-family: Arial, sans-serif;'>👨‍🎓 Alumno Benjamin Zelaya 👨‍🎓</h3>", unsafe_allow_html=True)
 
