@@ -100,15 +100,12 @@ if selected_column == 'date':
         st.write('Fechas seleccionadas:', ', '.join([date.strftime('%Y-%m-%d') for date in selected_dates]))
         filtered_data = df_selected_token[df_selected_token['date'].isin(selected_dates)]
         st.write('Promedio de precio:', filtered_data['price'].mean())
-        st.write('Máximo de precio:', filtered_data['price'].max())
-        st.write('Mínimo de precio:', filtered_data['price'].min())
         
-        # Obtener la fecha del máximo y del mínimo
-        max_price_date = filtered_data.loc[filtered_data['price'].idxmax()]['date']
-        min_price_date = filtered_data.loc[filtered_data['price'].idxmin()]['date']
+        max_price_row = filtered_data[filtered_data['price'] == filtered_data['price'].max()]
+        st.write('Máximo de precio:', max_price_row['price'].iloc[0], 'Fecha:', max_price_row['date'].iloc[0].strftime('%Y-%m-%d'))
         
-        st.write('Fecha del máximo:', max_price_date.strftime('%Y-%m-%d'))
-        st.write('Fecha del mínimo:', min_price_date.strftime('%Y-%m-%d'))
+        min_price_row = filtered_data[filtered_data['price'] == filtered_data['price'].min()]
+        st.write('Mínimo de precio:', min_price_row['price'].iloc[0], 'Fecha:', min_price_row['date'].iloc[0].strftime('%Y-%m-%d'))
 else:
     selected_values = st.multiselect('Selecciona valores', df_selected_token[selected_column].unique())
     if selected_values:
@@ -117,8 +114,6 @@ else:
         st.write('Promedio:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].mean())
         st.write('Máximo:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].max())
         st.write('Mínimo:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].min())
-
-
 
 # Agregar separador visual
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
