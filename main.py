@@ -316,9 +316,6 @@ st.subheader('Mapa de Calor de Correlación')
 st.write("El mapa de calor resalta visualmente las relaciones de correlación entre los tokens. Los colores más intensos representan una correlación más fuerte, ya sea positiva o negativa.")
 
 
-# Consideraciones Importantes
-st.header('Consideraciones Importantes ⚠️')
-st.warning("Antes de embarcarte en cualquier inversión en criptomonedas, es fundamental recordar que estos activos son altamente volátiles y conllevan riesgos significativos. La situación del mercado puede cambiar rápidamente. Te recomendamos investigar exhaustivamente cada proyecto y evaluar tu tolerancia al riesgo antes de considerar cualquier inversión.")
 st.markdown('<hr style="border: 2px solid #3498db;">', unsafe_allow_html=True)
 
 # Sección para Exchange Recomendados
@@ -339,6 +336,10 @@ for exchange in exchanges:
 
 # Nota: Asegúrate de proporcionar descripciones precisas y actualizadas de los exchanges, así como enlaces a sus sitios web oficiales.
 
+
+# Consideraciones Importantes
+st.header('Consideraciones Importantes ⚠️')
+st.warning("Antes de embarcarte en cualquier inversión en criptomonedas, es fundamental recordar que estos activos son altamente volátiles y conllevan riesgos significativos. La situación del mercado puede cambiar rápidamente. Te recomendamos investigar exhaustivamente cada proyecto y evaluar tu tolerancia al riesgo antes de considerar cualquier inversión.")
 
 # Agregar separador visual
 st.markdown('<hr style="border: 2px solid #3498db;">', unsafe_allow_html=True)
