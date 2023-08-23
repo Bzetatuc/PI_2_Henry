@@ -105,7 +105,20 @@ Uso Real: Ripple y sus soluciones para pagos internacionales, así como Tether y
 
 #### ⚠️ Importante: Es crucial tener en mente que la inversión en criptomonedas implica riesgos significativos y que la situación del mercado puede cambiar con gran rapidez. Antes de considerar cualquier inversión, es altamente recomendable llevar a cabo una investigación exhaustiva sobre cada proyecto. Además, es esencial evaluar tu tolerancia al riesgo y definir claramente tus objetivos financieros. Las criptomonedas son activos volátiles y no adecuados para todos los perfiles de inversores. ¡Siempre mantén la cautela y la prudencia en mente! 🚀📊🛡️
 
+<br> 
 
+## 📂 Archivos y Carpetas
+
+- **DATA:** Carpeta que contiene los datos utilizados para el análisis.
+- **ETL:** Carpeta que contiene el código y archivos relacionados con la extracción, transformación y carga de datos.
+- **EDA:** Carpeta que contiene el código y archivos relacionados con el análisis exploratorio de datos.
+- **images:** Carpeta que contiene imágenes utilizadas en el proyecto.
+- **venv:** Carpeta que contiene el entorno virtual de Python para el proyecto.
+- **.DS_Store:** Archivo del sistema.
+- **README.md:** Este archivo que proporciona una descripción detallada del proyecto.
+- **dataframes_dashboard.csv:** Archivo CSV que contiene los datos procesados utilizados en el dashboard.
+- **main.py:** Archivo Python que contiene el código principal del panel de control.
+- **requirements.txt:** Archivo que lista las bibliotecas y versiones requeridas para el proyecto.
 
 ## 📌 Recursos Utilizados
 
