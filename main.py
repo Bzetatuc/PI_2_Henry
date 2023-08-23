@@ -63,6 +63,49 @@ st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 st.header('Ganancias y Pérdidas 💰')
 st.write("¿Te preguntas cuánto podrías haber ganado si hubieras invertido en un token específico en el pasado? ¡Te tenemos cubierto! Puedes seleccionar una fecha de inversión y una fecha futura, junto con la cantidad que habrías invertido. Nuestra aplicación calculará y mostrará tus posibles ganancias o pérdidas, así como el retorno de inversión (ROI).")
 
+selected_investment_date = st.date_input('Selecciona una fecha para invertir:')
+selected_future_date = st.date_input('Selecciona una fecha futura:')
+investment_amount = st.number_input('Inversión en USD:', min_value=0.0)
+
+if selected_investment_date and selected_future_date and investment_amount > 0:
+    investment_row = df_selected_token[df_selected_token['date'] == selected_investment_date]
+    future_row = df_selected_token[df_selected_token['date'] == selected_future_date]
+    
+    if not investment_row.empty and not future_row.empty:
+        initial_price = investment_row['price'].values[0]
+        future_price = future_row['price'].values[0]
+        
+        potential_gain = investment_amount * (future_price / initial_price)
+        roi = ((future_price - initial_price) / initial_price) * 100
+        
+        st.write(f"Si hubieras invertido ${investment_amount:.2f}$ dolares en ${selected_token}$ el ${selected_investment_date}, "
+                 f"$ a la fecha ${selected_future_date}$ podrias haber obtenido un valor de ${potential_gain:.2f}$ dolares en {selected_token}.")
+        
+        # Mostrar ROI
+        st.markdown(f'Retorno de Inversion (Return on Investment "ROI"): **{roi:.2f}%**', unsafe_allow_html=True)
+
+        # Gráfico de cambio en el valor (gráfico de barras agrupadas)
+        fig_change = px.bar(
+            x=['Valor Inicial', 'Valor Futuro'],
+            y=[initial_price, future_price],
+            title='Cambio en el Valor',
+            labels={'x': 'Valor', 'y': 'Precio'}
+        )
+        fig_change.update_traces(marker_color=['#3498db', '#2ecc71'])
+        fig_change.update_traces(marker_line_width=0, marker_line_color='white')
+        st.plotly_chart(fig_change)
+        
+    else:
+        st.warning('Alguna de las fechas seleccionadas no está en el conjunto de datos o el token no coincide.')
+
+# Agregar separador visual
+st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
+
+# Sección para calcular ganancias 
+# Ganancias y Pérdidas entre tokens
+st.header('Ganancias y Pérdidas comparanfo Tokens 💰')
+st.write("¿Ahora te preguntas cuánto podrías haber ganado si hubieras invertido en otro token específico? ¡Te tenemos nuevamente cubierto! Puedes seleccionar otro token de nuestra lista,  una nueva fecha de inversión y una nueva fecha futura, junto con la cantidad que habrías invertido en ambos. Nuestra aplicación calculará y mostrará tus posibles ganancias o pérdidas, así como el retorno de inversión (ROI) comparativas.")
+
 # Seleccionar un token para comparar
 selected_comparison_token = st.selectbox('Selecciona un token para comparar', df_crypto_dashboard['symbol'].unique())
 
@@ -114,7 +157,6 @@ if selected_investment_date and selected_future_date and investment_amount > 0:
         
     else:
         st.warning('Alguna de las fechas seleccionadas no está en el conjunto de datos o los tokens no coinciden.')
-
 
 
 # Agregar separador visual
