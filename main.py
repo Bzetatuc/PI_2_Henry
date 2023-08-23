@@ -333,7 +333,7 @@ exchanges = [
     # Agrega más exchanges recomendados aquí
 ]
 
-# Mostrar la información de los exchanges en una lista
+# Mostrar la información de los exchanges 
 for exchange in exchanges:
     st.write(f"**{exchange['nombre']}**: {exchange['descripcion']} [Mas información]({exchange['link']})")
 
