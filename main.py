@@ -101,10 +101,9 @@ if selected_investment_date and selected_future_date and investment_amount > 0:
 # Agregar separador visual
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
-# Sección para calcular ganancias 
-# Ganancias y Pérdidas entre tokens
+# Sección para calcular ganancias y pérdidas comparando Tokens
 st.header('Ganancias y Pérdidas comparando Tokens 💰')
-st.write("¿Ahora te preguntas cuánto podrías haber ganado si hubieras invertido en otro token específico? ¡Te tenemos nuevamente cubierto! Puedes seleccionar otro token de nuestra lista,  una nueva fecha de inversión y una nueva fecha futura, junto con la cantidad que habrías invertido en ambos. Nuestra aplicación calculará y mostrará tus posibles ganancias o pérdidas, así como el retorno de inversión (ROI) comparativas.")
+st.write("¿Ahora te preguntas cuánto podrías haber ganado si hubieras invertido en otro token específico? ¡Te tenemos nuevamente cubierto! Puedes seleccionar otro token de nuestra lista, una nueva fecha de inversión y una nueva fecha futura, junto con la cantidad que habrías invertido en ambos. Nuestra aplicación calculará y mostrará tus posibles ganancias o pérdidas, así como el retorno de inversión (ROI) comparativas.")
 
 # Seleccionar un token para comparar
 selected_comparison_token = st.selectbox('Selecciona un token para comparar', df_crypto_dashboard['symbol'].unique())
@@ -112,51 +111,52 @@ selected_comparison_token = st.selectbox('Selecciona un token para comparar', df
 # Obtener los datos del token seleccionado para comparación
 df_comparison_token = df_crypto_dashboard[df_crypto_dashboard['symbol'] == selected_comparison_token]
 
-selected_investment_date = st.date_input('Selecciona una fecha para invertir:')
-selected_future_date = st.date_input('Selecciona una fecha futura:')
-investment_amount = st.number_input('Inversión en USD:', min_value=0.0)
+selected_investment_date_comparacion = st.date_input('Selecciona una fecha para invertir en la comparación:')
+selected_future_date_comparacion = st.date_input('Selecciona una fecha futura en la comparación:')
+investment_amount_comparacion = st.number_input('Inversión en USD en la comparación:', min_value=0.0)
 
-if selected_investment_date and selected_future_date and investment_amount > 0:
-    investment_row = df_selected_token[df_selected_token['date'] == selected_investment_date]
-    future_row = df_selected_token[df_selected_token['date'] == selected_future_date]
+if selected_investment_date_comparacion and selected_future_date_comparacion and investment_amount_comparacion > 0:
+    investment_row_comparacion = df_selected_token[df_selected_token['date'] == selected_investment_date_comparacion]
+    future_row_comparacion = df_selected_token[df_selected_token['date'] == selected_future_date_comparacion]
     
-    comparison_investment_row = df_comparison_token[df_comparison_token['date'] == selected_investment_date]
-    comparison_future_row = df_comparison_token[df_comparison_token['date'] == selected_future_date]
+    comparison_investment_row = df_comparison_token[df_comparison_token['date'] == selected_investment_date_comparacion]
+    comparison_future_row = df_comparison_token[df_comparison_token['date'] == selected_future_date_comparacion]
     
-    if not investment_row.empty and not future_row.empty and not comparison_investment_row.empty and not comparison_future_row.empty:
-        initial_price = investment_row['price'].values[0]
-        future_price = future_row['price'].values[0]
+    if not investment_row_comparacion.empty and not future_row_comparacion.empty and not comparison_investment_row.empty and not comparison_future_row.empty:
+        initial_price_comparacion = investment_row_comparacion['price'].values[0]
+        future_price_comparacion = future_row_comparacion['price'].values[0]
         comparison_initial_price = comparison_investment_row['price'].values[0]
         comparison_future_price = comparison_future_row['price'].values[0]
         
-        potential_gain = investment_amount * (future_price / initial_price)
-        roi = ((future_price - initial_price) / initial_price) * 100
-        comparison_potential_gain = investment_amount * (comparison_future_price / comparison_initial_price)
+        potential_gain_comparacion = investment_amount_comparacion * (future_price_comparacion / initial_price_comparacion)
+        roi_comparacion = ((future_price_comparacion - initial_price_comparacion) / initial_price_comparacion) * 100
+        comparison_potential_gain = investment_amount_comparacion * (comparison_future_price / comparison_initial_price)
         comparison_roi = ((comparison_future_price - comparison_initial_price) / comparison_initial_price) * 100
         
-        st.write(f"Si hubieras invertido ${investment_amount:.2f}$ dolares en ${selected_token}$ el ${selected_investment_date}, "
-                 f"$ a la fecha ${selected_future_date}$ podrías haber obtenido un valor de ${potential_gain:.2f}$ dolares en {selected_token}.")
+        st.write(f"Si hubieras invertido ${investment_amount_comparacion:.2f}$ dolares en ${selected_token}$ el ${selected_investment_date_comparacion}, "
+                 f"a la fecha ${selected_future_date_comparacion}$ podrías haber obtenido un valor de ${potential_gain_comparacion:.2f}$ dolares en {selected_token}.")
         
-        st.write(f"Si hubieras invertido ${investment_amount:.2f}$ dolares en {selected_comparison_token} el ${selected_investment_date}, "
-                 f"a la fecha ${selected_future_date}$ podrías haber obtenido un valor de ${comparison_potential_gain:.2f}$ dolares en {selected_comparison_token}.")
+        st.write(f"Si hubieras invertido ${investment_amount_comparacion:.2f}$ dolares en {selected_comparison_token} el ${selected_investment_date_comparacion}, "
+                 f"a la fecha ${selected_future_date_comparacion}$ podrías haber obtenido un valor de ${comparison_potential_gain:.2f}$ dolares en {selected_comparison_token}.")
         
         # Mostrar ROIs
-        st.markdown(f'Retorno de Inversion (ROI) para {selected_token}: **{roi:.2f}%**', unsafe_allow_html=True)
+        st.markdown(f'Retorno de Inversion (ROI) para {selected_token}: **{roi_comparacion:.2f}%**', unsafe_allow_html=True)
         st.markdown(f'Retorno de Inversion (ROI) para {selected_comparison_token}: **{comparison_roi:.2f}%**', unsafe_allow_html=True)
 
         # Gráfico de cambio en el valor (gráfico de barras agrupadas)
-        fig_change = px.bar(
+        fig_change_comparacion = px.bar(
             x=[f'Valor Inicial ({selected_token})', f'Valor Futuro ({selected_token})', f'Valor Inicial ({selected_comparison_token})', f'Valor Futuro ({selected_comparison_token})'],
-            y=[initial_price, future_price, comparison_initial_price, comparison_future_price],
+            y=[initial_price_comparacion, future_price_comparacion, comparison_initial_price, comparison_future_price],
             title='Cambio en el Valor',
             labels={'x': 'Valor', 'y': 'Precio'}
         )
-        fig_change.update_traces(marker_color=['#3498db', '#2ecc71', '#e74c3c', '#9b59b6'])
-        fig_change.update_traces(marker_line_width=0, marker_line_color='white')
-        st.plotly_chart(fig_change)
+        fig_change_comparacion.update_traces(marker_color=['#3498db', '#2ecc71', '#e74c3c', '#9b59b6'])
+        fig_change_comparacion.update_traces(marker_line_width=0, marker_line_color='white')
+        st.plotly_chart(fig_change_comparacion)
         
     else:
         st.warning('Alguna de las fechas seleccionadas no está en el conjunto de datos o los tokens no coinciden.')
+
 
 
 # Agregar separador visual
