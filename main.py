@@ -38,15 +38,20 @@ df_selected_token = df_crypto_dashboard[df_crypto_dashboard['symbol'] == selecte
 st.header('Análisis de un Token Específico 📊')
 st.write("Una vez seleccionado un token, presentamos detalles clave sobre su rendimiento. Mostramos el precio máximo, mínimo y promedio a lo largo del tiempo. Esto te permitirá obtener una visión rápida de cómo ha evolucionado el token en el período analizado.")
 st.write("También proporcionamos un gráfico interactivo que muestra la evolución del precio de ese token a lo largo del tiempo. Puedes explorar las tendencias y cambios en el valor con facilidad.")
+
 token_max_price = df_selected_token['price'].max()
 token_min_price = df_selected_token['price'].min()
 token_avg_price = df_selected_token['price'].mean()
+token_volatility = df_selected_token['price'].std()
+
 
 # Diseño en columnas para mostrar los primeros KPIs
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("Máximo Precio", f"${token_max_price:.2f}")
 col2.metric("Mínimo Precio", f"${token_min_price:.2f}")
 col3.metric("Precio Promedio", f"${token_avg_price:.2f}")
+col4.metric("Volatilidad", f"{token_volatility:.2f}")
+
 
 # Gráfico de precio a lo largo del tiempo para el token seleccionado
 fig = px.line(df_selected_token, x='date', y='price', title=f'Precio a lo largo del tiempo para {selected_token}')
