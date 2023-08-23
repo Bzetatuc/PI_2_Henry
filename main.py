@@ -111,7 +111,7 @@ st.write("Dentro de la sección del token seleccionado, te ofrecemos un vistazo 
 
 # Seleccionar una columna para análisis
 #Aquí, se crea un cuadro de selección (selectbox) donde el usuario puede elegir una columna del DataFrame df_selected_token para realizar análisis.
-selected_column = st.selectbox('Selecciona una columna para análisis', ['date', 'price', 'ath_value'])
+selected_column = st.selectbox('Selecciona una columna para análisis', ['date', 'price'])
 
 # Interacción con valores seleccionados
 #Si la columna seleccionada es 'date', se muestran las fechas únicas disponibles en el DataFrame mediante un cuadro de selección múltiple (multiselect).
@@ -131,8 +131,10 @@ if selected_column == 'date':
         
         min_date_row = filtered_data[filtered_data['price'] == filtered_data['price'].min()]
         st.write('Mínimo de precio:', min_date_row['price'].iloc[0], 'Fecha:', min_date_row['date'].iloc[0].strftime('%Y-%m-%d'))
+        
+        st.write('Precio promedio:', filtered_data['price'].mean())
 
-elif selected_column in ['price', 'ath_value']:
+elif selected_column in ['price']:
     selected_values = st.multiselect(f'Selecciona valores de la columna {selected_column}', df_selected_token[selected_column].unique())
     if selected_values:
         st.subheader(f'Análisis de {selected_column}')
@@ -145,6 +147,8 @@ elif selected_column in ['price', 'ath_value']:
         min_value_row = df_selected_token[df_selected_token[selected_column].isin(selected_values)][selected_column].idxmin()
         st.write(f'Mínimo de {selected_column}:', df_selected_token.loc[min_value_row, selected_column],
                  'Fecha:', df_selected_token.loc[min_value_row, 'date'].strftime('%Y-%m-%d'))
+        
+        st.write('Precio promedio:', df_selected_token[df_selected_token[selected_column].isin(selected_values)]['price'].mean())
 #Si la columna seleccionada no es 'date', significa que el usuario eligió otra columna para análisis. 
 # En este caso, se permite al usuario seleccionar valores únicos de esa columna utilizando un cuadro de selección múltiple.
 # Después de seleccionar los valores, se filtran los datos para incluir solo las filas que contienen los valores seleccionados. 
