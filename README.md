@@ -101,6 +101,10 @@ Uso Real: Ripple y sus soluciones para pagos internacionales, así como Tether y
 
 <br>
 
+### ¡Explora más a fondo cada criptomoneda y considera cómo se alinean con tus objetivos y estrategia de inversión!📊
+
+#### ⚠️ Importante: Es crucial tener en mente que la inversión en criptomonedas implica riesgos significativos y que la situación del mercado puede cambiar con gran rapidez. Antes de considerar cualquier inversión, es altamente recomendable llevar a cabo una investigación exhaustiva sobre cada proyecto. Además, es esencial evaluar tu tolerancia al riesgo y definir claramente tus objetivos financieros. Las criptomonedas son activos volátiles y no adecuados para todos los perfiles de inversores. ¡Siempre mantén la cautela y la prudencia en mente! 🚀📊🛡️
+
 
 
 ## 📌 Recursos Utilizados
@@ -115,6 +119,8 @@ En este proyecto, hemos utilizado las siguientes herramientas y recursos:
 
 - Matplotlib y Seaborn: Generamos gráficos y visualizaciones para representar los datos de manera clara y comprensible.
 
+
+<br>
 <br>
 
 
@@ -126,11 +132,3 @@ En este proyecto, hemos utilizado las siguientes herramientas y recursos:
 - [Seaborn Documentation](https://seaborn.pydata.org/documentation.html)
 
 <br>
-
-
-### ¡Explora más a fondo cada criptomoneda y considera cómo se alinean con tus objetivos y estrategia de inversión!📊
-
-#### ⚠️ Importante: Es crucial tener en mente que la inversión en criptomonedas implica riesgos significativos y que la situación del mercado puede cambiar con gran rapidez. Antes de considerar cualquier inversión, es altamente recomendable llevar a cabo una investigación exhaustiva sobre cada proyecto. Además, es esencial evaluar tu tolerancia al riesgo y definir claramente tus objetivos financieros. Las criptomonedas son activos volátiles y no adecuados para todos los perfiles de inversores. ¡Siempre mantén la cautela y la prudencia en mente! 🚀📊🛡️
-
-
-
