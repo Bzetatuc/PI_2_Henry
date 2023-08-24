@@ -49,7 +49,7 @@ En esta aplicación de análisis de criptomonedas, se presentan varios KPIs que 
 
 * **Binance Coin (BNB):** BNB es la moneda nativa de Binance, una de las principales plataformas de intercambio de criptomonedas. Muchos inversores podrían considerar invertir en BNB debido a su utilidad en la plataforma Binance, como descuentos en tarifas de intercambio y acceso a ventas de tokens. Además, el crecimiento de Binance como plataforma podría impactar positivamente en la demanda de BNB. 💱
 
-* **Bitcoin (BTC):** itcoin es considerado como oro digital y una reserva de valor. Muchos inversores ven a Bitcoin como un activo seguro y una forma de diversificar sus carteras. La escasez de suministro, la adopción institucional y la cobertura mediática hacen que Bitcoin sea atractivo para aquellos que buscan inversiones a largo plaz. ₿
+* **Bitcoin (BTC):** Bitcoin es considerado como oro digital y una reserva de valor. Muchos inversores ven a Bitcoin como un activo seguro y una forma de diversificar sus carteras. La escasez de suministro, la adopción institucional y la cobertura mediática hacen que Bitcoin sea atractivo para aquellos que buscan inversiones a largo plaz. ₿
 
 * **Cardano (ADA):** Cardano se centra en la investigación científica y el desarrollo de soluciones robustas. Su enfoque en la escalabilidad y la sostenibilidad podría atraer a inversores interesados en proyectos blockchain de alto potencial. Además, su plataforma para contratos inteligentes y aplicaciones descentralizadas también podría ser un factor atractivo. 🏛️
 
