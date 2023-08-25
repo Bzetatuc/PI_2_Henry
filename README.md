@@ -99,7 +99,7 @@ Uso Real: Ripple y sus soluciones para pagos internacionales, así como Tether y
 
 
 ## 📊 Panel de Control de Dashboard
-¿Listo para explorar el panel de control y los análisis completos? [¡Vamos a introducirnos en el Dashoboard interactivo!]()
+¿Listo para explorar el panel de control y los análisis completos? [¡Vamos a introducirnos en el Dashoboard interactivo!](https://mainpy-hze6bykhappix4mbvy6pcqr.streamlit.app)
 
 
 <img src="./images/crypto_market.jpeg-900x510.jpg" alt="tokens" width="600"/>
