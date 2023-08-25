@@ -127,7 +127,7 @@ Uso Real: Ripple y sus soluciones para pagos internacionales, así como Tether y
 
 ## 📌 Recursos Utilizados
 
-En este proyecto, hemos utilizado las siguientes herramientas y recursos:
+En este proyecto, hemos utilizado las siguientes herramientas, recursos y fuentes de datos:
 
 - Python: Utilizamos Python como lenguaje de programación principal para el análisis de datos y la generación de visualizaciones.
 
@@ -137,10 +137,10 @@ En este proyecto, hemos utilizado las siguientes herramientas y recursos:
 
 - Matplotlib y Seaborn: Generamos gráficos y visualizaciones para representar los datos de manera clara y comprensible.
 
+- CoinGecko API: Utilizamos la API de CoinGecko para obtener datos actualizados sobre criptomonedas, incluyendo precios, capitalización de mercado y otros indicadores.
 
 <br>
 <br>
-
 
 ## 📚 Referencias
 
@@ -148,5 +148,4 @@ En este proyecto, hemos utilizado las siguientes herramientas y recursos:
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
 - [Matplotlib Documentation](https://matplotlib.org/stable/contents.html)
 - [Seaborn Documentation](https://seaborn.pydata.org/documentation.html)
-
-<br>
+- [CoinGecko API](https://coingecko.com/en/api)
