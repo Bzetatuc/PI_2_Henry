@@ -334,7 +334,6 @@ exchanges = [
 for exchange in exchanges:
     st.write(f"**{exchange['nombre']}**: {exchange['descripcion']} [Mas información]({exchange['link']})")
 
-# Nota: Asegúrate de proporcionar descripciones precisas y actualizadas de los exchanges, así como enlaces a sus sitios web oficiales.
 
 
 # Consideraciones Importantes
