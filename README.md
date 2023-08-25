@@ -1,5 +1,11 @@
 # 🚀 Análisis de Datos de Criptomonedas 📊
-🔍 En este emocionante proyecto, nos sumergimos en el apasionante mundo de las criptomonedas utilizando Python y Streamlit para llevar a cabo un análisis exhaustivo. Nuestro enfoque abarca desde el cálculo detallado de ganancias y pérdidas potenciales hasta la exploración profunda de las tendencias dominantes en el panorama de las finanzas descentralizadas (DeFi). ¡Acompáñanos en este emocionante viaje mientras desentrañamos los secretos de este innovador universo financiero! 🌌💰📈🔍<br>
+🔍 En este emocionante proyecto, nos sumergimos en el apasionante mundo de las criptomonedas utilizando Python, Streamlit y la CoinGecko API para llevar a cabo un análisis exhaustivo. Nuestro enfoque abarca desde el cálculo detallado de ganancias y pérdidas potenciales impulsado por datos en tiempo real hasta la exploración profunda de las tendencias dominantes en el panorama de las finanzas descentralizadas (DeFi) respaldadas por información actualizada.
+
+💼 La integración de CoinGecko API nos permite acceder a una variedad de datos cruciales sobre criptomonedas, incluyendo precios en tiempo real, capitalización de mercado y datos históricos. Esta integración potencia nuestro análisis y nos brinda la capacidad de ofrecer información precisa y relevante a nuestros usuarios.
+
+📈 A medida que desentrañamos los secretos de este innovador universo financiero, aprovechamos la riqueza de la CoinGecko API para enriquecer nuestras visualizaciones y cálculos. Desde explorar la evolución de los precios hasta identificar patrones emergentes, nuestra herramienta se convierte en una guía integral para aquellos interesados en comprender el mundo en constante cambio de las criptomonedas.
+
+¡Acompáñanos en este emocionante viaje mientras exploramos, analizamos y visualizamos el emocionante panorama de las criptomonedas respaldados por la potencia de la CoinGecko API!📊
 
 <br>
 
@@ -99,7 +105,8 @@ Uso Real: Ripple y sus soluciones para pagos internacionales, así como Tether y
 
 
 ## 📊 Panel de Control de Dashboard
-¿Listo para explorar el panel de control y los análisis completos? ¡Vamos a introducirnos en el Dashoboard interactivo!
+¿Listo para explorar el panel de control y los análisis completos? [¡Vamos a introducirnos en el Dashboard interactivo!](https://mainpy-hze6bykhappix4mbvy6pcqr.streamlit.app)
+
 
 
 <img src="./images/crypto_market.jpeg-900x510.jpg" alt="tokens" width="600"/>
