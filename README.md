@@ -123,7 +123,7 @@ Uso Real: Ripple y sus soluciones para pagos internacionales, así como Tether y
 
 - **DATA:** Carpeta que contiene los datos utilizados para el análisis.
 - **ETL:** Carpeta que contiene el código y archivos relacionados con la extracción, transformación y carga de datos.
-- **EDA:** Carpeta que contiene el código y archivos relacionados al EDA, incluye tambien el Archivo INFORME EDA.ipynb donde se encuentra el Analisis Explotarotio de Datos de nuestro proyecto.
+- **EDA:** Carpeta que contiene el código y archivos relacionados al EDA, incluye también el [Archivo INFORME EDA.ipynb](./EDA/INFORME%20EDA%20.ipynb) donde se encuentra el Análisis Exploratorio de Datos de nuestro proyecto.
 - **images:** Carpeta que contiene imágenes utilizadas en el proyecto.
 - **venv:** Carpeta que contiene el entorno virtual de Python para el proyecto.
 - **.DS_Store:** Archivo del sistema.
@@ -131,6 +131,7 @@ Uso Real: Ripple y sus soluciones para pagos internacionales, así como Tether y
 - **dataframes_dashboard.csv:** Archivo CSV que contiene los datos procesados utilizados en el dashboard.
 - **main.py:** Archivo Python que contiene el código principal del panel de control.
 - **requirements.txt:** Archivo que lista las bibliotecas y versiones requeridas para el proyecto.
+
 
 ## 📌 Recursos Utilizados
 
