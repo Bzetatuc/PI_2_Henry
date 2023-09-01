@@ -19,9 +19,9 @@ except Exception as e:
 st.title('Análisis de Criptomonedas 🚀📊')
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
-video_path = "/Users/benjaminzelaya/Desktop/Sanc/Untitled design.mp4"  
+# video_path = "/Users/benjaminzelaya/Desktop/Sanc/Untitled design.mp4"  
 
-st.video(video_path)
+# st.video(video_path)
 
 # Sidebar para seleccionar token
 
