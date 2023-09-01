@@ -4,9 +4,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-# logo en la parte superior
-logo_path = '/Users/benjaminzelaya/Desktop/PI_DA-main/PI_2_Henry/PI_2_Henry/wealthsimple.png'
-st.image(logo_path, width=500)
+# # logo en la parte superior
+# logo_path = '/Users/benjaminzelaya/Desktop/PI_DA-main/PI_2_Henry/PI_2_Henry/wealthsimple.png'
+# st.image(logo_path, width=500)
 
 # Leer el archivo CSV y procesar los datos
 try:
