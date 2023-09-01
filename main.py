@@ -1,6 +1,12 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
+
+
+# logo en la parte superior
+logo_path = '/Users/benjaminzelaya/Desktop/PI_DA-main/PI_2_Henry/PI_2_Henry/images/wealthsimple.png'
+st.image(logo_path, width=500)
 
 # Leer el archivo CSV y procesar los datos
 try:
@@ -13,13 +19,9 @@ except Exception as e:
 st.title('Análisis de Criptomonedas 🚀📊')
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
 
-# Título del video
-st.title("Historia de Inversión en Criptomonedas")
+video_path = "/Users/benjaminzelaya/Desktop/Sanc/Untitled design.mp4"  
 
-# Agregar el video
-video_url = "https://youtu.be/TFE_-AUo56I"  
-st.video(video_url)
-
+st.video(video_path)
 
 # Sidebar para seleccionar token
 
@@ -45,32 +47,64 @@ st.header('Explorando el Mercado 📈')
 st.write("Comenzamos con un vistazo general al mercado. Cargamos los datos de diferentes criptomonedas y mostramos las principales estadísticas. Además, puedes seleccionar el token que más te interese en el menú de la barra lateral.")
 
 
-
-
 # Filtrar datos por token seleccionado
 df_selected_token = df_crypto_dashboard[df_crypto_dashboard['symbol'] == selected_token]
-
-# Calcular KPIs para el token seleccionado
-# Análisis de un Token Específico
-st.header('Análisis de un Token Específico 📊')
-st.write("Una vez seleccionado un token, presentamos detalles clave sobre su rendimiento. Mostramos el precio máximo, mínimo y promedio a lo largo del tiempo. Esto te permitirá obtener una visión rápida de cómo ha evolucionado el token en el período analizado.")
-st.write("También proporcionamos un gráfico interactivo que muestra la evolución del precio de ese token a lo largo del tiempo. Puedes explorar las tendencias y cambios en el valor con facilidad.")
-
+# Calcular los KPIs
 token_max_price = df_selected_token['price'].max()
 token_min_price = df_selected_token['price'].min()
 token_avg_price = df_selected_token['price'].mean()
 
+# Presentar los KPIs
+st.header(f'Análisis de {selected_token} 📊')
+st.write(f"Detalles clave sobre {selected_token} rendimiento. Visualiza el precio máximo, mínimo y promedio a lo largo del tiempo para obtener una comprensión rápida de su evolución.")
+st.write("Explora las tendencias y cambios en el valor con el gráfico interactivo a continuación.")
 
-# Diseño en columnas para mostrar los primeros KPIs
-col1, col2, col3, col4 = st.columns(4)
-col1.metric("Máximo Precio", f"${token_max_price:.2f}")
-col2.metric("Mínimo Precio", f"${token_min_price:.2f}")
-col3.metric("Precio Promedio", f"${token_avg_price:.2f}")
+col1, col2, col3, _ = st.columns(4)
+col1.metric("Máximo Precio 2020-2023", f"${token_max_price:.2f}")
+col2.metric("Mínimo Precio 2020-2023", f"${token_min_price:.2f}")
+col3.metric("Precio Promedio 2020-2023", f"${token_avg_price:.2f}")
+
+# Crear el gráfico de precio a lo largo del tiempo
+fig = go.Figure()
+
+# Agregar el gráfico de línea principal
+line_trace = go.Scatter(x=df_selected_token['date'], y=df_selected_token['price'], #Se utiliza Plotly (go.Figure()) para crear un gráfico interactivo.
+                        mode='lines', name='Precio')
+fig.add_trace(line_trace)
+#Se agrega un gráfico de línea principal (go.Scatter()) que representa el precio del token a lo largo del tiempo.
+# # Los datos para el eje x (fechas) provienen del DataFrame df_selected_token['date'], y los datos para el eje y (precios) provienen de df_selected_token['price'].
 
 
-# Gráfico de precio a lo largo del tiempo para el token seleccionado
-fig = px.line(df_selected_token, x='date', y='price', title=f'Precio a lo largo del tiempo para {selected_token}')
+# Agregar selección de rango
+range_selector = go.layout.XAxis(
+    rangeslider=dict(visible=True),
+    rangeselector=dict(
+        buttons=list([
+            dict(count=1, label="1d", step="day", stepmode="backward"),
+            dict(count=7, label="1w", step="day", stepmode="backward"),
+            dict(count=1, label="1m", step="month", stepmode="backward"),
+            dict(count=3, label="3m", step="month", stepmode="backward"),
+            dict(step="all")
+        ])
+    )
+)
+fig.update_layout(xaxis=range_selector)
+
+#Se agrega un selector de rango en el eje x (range_selector) para permitir a los usuarios explorar diferentes intervalos de tiempo en el gráfico.
+# Los botones en el selector de rango permiten ajustar la vista a intervalos de 1 día, 1 semana, 1 mes, 3 meses y la vista completa
+
+# Personalizar el diseño del gráfico
+fig.update_layout(title=f'Precio a lo largo del tiempo para {selected_token}',
+                  xaxis_title='Fecha', yaxis_title='Precio',
+                  template='plotly_dark')
+
+#fig.update_layout() se usa para personalizar el diseño del gráfico. 
+# Se establece el título del gráfico, los títulos de los ejes x e y, y se aplica un estilo oscuro (plotly_dark) al gráfico.
+
+# Mostrar el gráfico en Streamlit
 st.plotly_chart(fig)
+
+# Finalmente, st.plotly_chart(fig) se utiliza para mostrar el gráfico interactivo en la interfaz de Streamlit.
 
 # Agregar separador visual
 st.markdown('<hr style="border: 2px solid #e74c3c;">', unsafe_allow_html=True)
@@ -94,7 +128,12 @@ if selected_investment_date and selected_future_date and investment_amount > 0:
         
         potential_gain = investment_amount * (future_price / initial_price)
         roi = ((future_price - initial_price) / initial_price) * 100
-        
+        #El cálculo del ROI (Return on Investment) implica comparar el resultado final (ganancia o pérdida) de una inversión con respecto a su costo inicial.
+         # En este contexto, el ROI se calcula como la variación porcentual entre el precio futuro y el precio inicial de un activo financiero (en este caso, el token seleccionado). 
+         # primero samocamos la ganancia potencial que es precio futuro - precio inicial 
+        #La fórmula general para calcular el ROI es la siguiente: ganancia potencial sobre precio inicial x 100
+
+
         st.write(f" Si hubieras invertido ${investment_amount:.2f} dolares en  {selected_token}  el  {selected_investment_date}, "
                  f" a la fecha  {selected_future_date}  podrias haber obtenido un valor de  {potential_gain:.2f}  dolares en {selected_token}.")
         
@@ -349,4 +388,4 @@ st.markdown("<h2 style='text-align: center; font-family: Arial, sans-serif; colo
 st.markdown("<h3 style='text-align: center; font-family: Arial, sans-serif;'>👨‍🎓 Alumno Benjamin Zelaya 👨‍🎓</h3>", unsafe_allow_html=True)
 
 
-### streamlit run crypto_dashboard_app.py  (PARA CORRER EN LOCAL)
+### streamlit run main.py  (PARA CORRER EN LOCAL)
