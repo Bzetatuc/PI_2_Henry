@@ -384,8 +384,8 @@ st.markdown('<hr style="border: 2px solid #3498db;">', unsafe_allow_html=True)
 
 # Centrar texto con estilo y emojis
 #creditos
-st.markdown("<h2 style='text-align: center; font-family: Arial, sans-serif; color: #3498db;'>🚀 Proyecto Individual 2 Data Science - Henry 🚀</h2>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center; font-family: Arial, sans-serif;'>👨‍🎓 Alumno Benjamin Zelaya 👨‍🎓</h3>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; font-family: Arial, sans-serif; color: #3498db;'>🚀 Proyecto Individual 2 Data Science 🚀</h2>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; font-family: Arial, sans-serif;'>👨‍🎓 Benjamin Zelaya 👨‍🎓</h3>", unsafe_allow_html=True)
 
 
 ### streamlit run main.py  (PARA CORRER EN LOCAL)
